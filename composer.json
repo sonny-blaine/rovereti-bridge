@@ -1,0 +1,23 @@
+{
+    "name": "sonny-blaine/rovereti-bridge",
+    "description": "Bridge to integrate with Rovereti ERP",
+    "type": "project",
+    "require": {
+        "php": ">=7.1",
+        "sonny-blaine/integrator-bridge": ">=1.0",
+        "simonetti/rovereti-sdk": ">=1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SonnyBlaine\\RoveretiBridge\\": "src/"
+        }
+    },
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "Ráfaga Queiroz",
+            "email": "rafaga.queiroz@moveissimonetti.com.br"
+        }
+    ],
+    "minimum-stability": "stable"
+}
