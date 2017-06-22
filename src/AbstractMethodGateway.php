@@ -28,7 +28,7 @@ abstract class AbstractMethodGateway
     public function getMethodFromRequest(RequestInterface $request): MethodInterface
     {
         foreach ($this->methods as $method) {
-            if (!$method->validateMethod($request)) {
+            if ($method->validateMethod($request)) {
                 return $method;
             }
         }

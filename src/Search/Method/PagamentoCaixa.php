@@ -2,7 +2,7 @@
 
 namespace SonnyBlaine\RoveretiBridge\Search\Method;
 
-use GuzzleHttp\Client;
+use Simonetti\Rovereti\Client;
 use SonnyBlaine\IntegratorBridge\RequestInterface;
 use SonnyBlaine\RoveretiBridge\MethodInterface;
 use Simonetti\Rovereti as SDK;
@@ -31,7 +31,7 @@ class PagamentoCaixa implements MethodInterface
      * @return SDK\SearchResponse
      * @throws \Exception
      */
-    public function execute(Client $client, RequestInterface $request)
+    public function execute(Client $client, RequestInterface $request): SDK\SearchResponse
     {
         $data = $request->getData();
 
@@ -48,8 +48,7 @@ class PagamentoCaixa implements MethodInterface
             throw new \Exception("Sorry, incorrect date format!");
         }
 
-        $buscarPagamentoCaixa = new SDK\BuscarPagamentoCaixa($client);
-
-        return $buscarPagamentoCaixa->execute(self::PAGAMENTO_CAIXA_METHOD, $data->codEmpresa, $datPagamento);
+        return (new SDK\BuscarPagamentoCaixa($client))
+            ->execute(self::URL, $data->codEmpresa, $datPagamento);
     }
 }
