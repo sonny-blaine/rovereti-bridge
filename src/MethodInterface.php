@@ -2,7 +2,7 @@
 
 namespace SonnyBlaine\RoveretiBridge;
 
-use GuzzleHttp\Client;
+use Simonetti\Rovereti\Client;
 use SonnyBlaine\IntegratorBridge\RequestInterface;
 
 interface MethodInterface
