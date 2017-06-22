@@ -1,10 +1,12 @@
 <?php
+
 namespace SonnyBlaine\RoveretiBridge;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Simonetti\Rovereti as SDK;
 use SonnyBlaine\IntegratorBridge\BridgeInterface;
 use SonnyBlaine\IntegratorBridge\RequestInterface;
+use SonnyBlaine\RoveretiBridge\Search;
 
 /**
  * Class RoveretiBridge
@@ -99,5 +101,16 @@ class RoveretiBridge implements BridgeInterface
             default:
                 throw new \Exception("Error: Method undefined.");
         }
+    }
+
+    /**
+     * @param RequestInterface $request
+     * @return mixed
+     */
+    public function search(RequestInterface $request)
+    {
+        return Search\MethodGateway::getInstance()
+            ->getMethodFromRequest($request)
+            ->execute($this->client, $request);
     }
 }
