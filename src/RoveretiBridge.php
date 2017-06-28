@@ -20,6 +20,7 @@ class RoveretiBridge implements BridgeInterface
     const URI_INCLUIR_MOVIMENTO_CAIXA = 'Caixa/IncluirMovtoCaixa';
     const URI_INCLUIR_MOVIMENTO_CAIXA_BANCO = 'Caixa/IncluirMovtoCaixaBanco';
     const URI_INCLUIR_MOVIMENTO_CONTA_CORRENTE = 'ContaCorrente/IncluirMovtoContaCorrente';
+    const URI_INCLUIR_CREDITO_FORNECEDOR = 'CreditoFornecedor/IncluirCreditoFornecedor';
 
     /**
      * Client to integrate
@@ -96,6 +97,14 @@ class RoveretiBridge implements BridgeInterface
 
                 $incluirMCC = new SDK\IncluirMovimentoContaCorrente($this->client);
                 $incluirMCC->execute(self::URI_INCLUIR_MOVIMENTO_CONTA_CORRENTE, $movimentoCC);
+                break;
+
+            case 'IncluirCreditoFornecedor':
+                $creditoFornecedor = new SDK\CreditoFornecedor();
+                $creditoFornecedor->populate($request->getData());
+
+                $incluirCF = new SDK\IncluirCreditoFornecedor($this->client);
+                $incluirCF->execute(self::URI_INCLUIR_CREDITO_FORNECEDOR, $creditoFornecedor);
                 break;
 
             default:
