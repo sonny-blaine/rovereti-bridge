@@ -3,7 +3,7 @@
 namespace SonnyBlaine\RoveretiBridge\Search;
 
 use SonnyBlaine\RoveretiBridge\AbstractMethodGateway;
-use SonnyBlaine\RoveretiBridge\Search\Method\PagamentoCaixa;
+use SonnyBlaine\RoveretiBridge\Search\Method;
 
 /**
  * Class MethodGateway
@@ -27,7 +27,8 @@ class MethodGateway extends AbstractMethodGateway
     {
         return new self(
             [
-                new PagamentoCaixa()
+                new Method\PagamentoCaixa(),
+                new Method\DisponibilidadeFinanceira()
             ]
         );
     }
