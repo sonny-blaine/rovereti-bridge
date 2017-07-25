@@ -6,7 +6,7 @@
         "php": ">=7.1",
         "sonny-blaine/integrator-bridge": ">=1.0",
         "simonetti/rovereti-sdk": ">=1.0",
-        "pimple/pimple": "~3.0"
+        "pimple/pimple": "~3.2"
     },
     "autoload": {
         "psr-4": {
