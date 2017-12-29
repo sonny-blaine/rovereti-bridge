@@ -23,7 +23,7 @@ class DisponibilidadeFinanceira implements MethodInterface
             throw new \Exception("Sorry, codEmpresa is empty!");
         }
 
-        $anoMes = \DateTime::createFromFormat("Ym", $request->getData()->anoMes);
+        $anoMes = \DateTime::createFromFormat("!Ym", $request->getData()->anoMes);
         if (!$anoMes) {
             throw new \Exception("Sorry, data is empty os invalid!");
         }
