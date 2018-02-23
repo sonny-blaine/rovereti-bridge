@@ -109,11 +109,22 @@ class RoveretiBridge implements BridgeInterface
                 break;
 
             case 'IncluirContratoContaReceber':
+                $data = $request->getData();
+
+                $parcela = new \stdClass;
+                $parcela->numParcela = $data->numParcela;
+                $parcela->datVencimento = $data->datVencimento;
+                $parcela->vlrParcela = $data->vlrParcela;
+
+                $data->parcelas = [$parcela];
+
+                unset($data->numParcela, $data->datVencimento, $data->vlrParcela);
+
                 $contratoContaReceber = new SDK\ContratoContaReceber();
-                $contratoContaReceber->populate($request->getData());
+                $contratoContaReceber->populate($data);
 
                 $incluirCCR = new SDK\IncluirContratoContaReceber($this->client);
-                $incluirCCR->execute(self::URI_INCLUIR_CONTRATO, $contratoContaReceber);
+                $incluirCCR->execute(self::URI_INCLUIR_CONTRATO_CONTA_RECEBER, $contratoContaReceber);
                 break;
 
             default:
