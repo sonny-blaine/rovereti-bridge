@@ -5,7 +5,8 @@ namespace SonnyBlaine\RoveretiBridge;
 use GuzzleHttp\Client as GuzzleClient;
 use Simonetti\Rovereti as SDK;
 use SonnyBlaine\IntegratorBridge\BridgeInterface;
-use SonnyBlaine\IntegratorBridge\RequestInterface;
+use SonnyBlaine\IntegratorBridge\IntegrateRequestInterface;
+use SonnyBlaine\IntegratorBridge\SearchRequestInterface;
 use SonnyBlaine\RoveretiBridge\Search;
 
 /**
@@ -45,11 +46,11 @@ class RoveretiBridge implements BridgeInterface
 
     /**
      * Integrates a requisition
-     * @param RequestInterface $request
+     * @param IntegrateRequestInterface $request
      * @throws \Exception
      * @return void
      */
-    public function integrate(RequestInterface $request): void
+    public function integrate(IntegrateRequestInterface $request): void
     {
         switch ($request->getMethodIdentifier()) {
             case 'IncluirPessoaJuridica':
@@ -133,10 +134,10 @@ class RoveretiBridge implements BridgeInterface
     }
 
     /**
-     * @param RequestInterface $request
+     * @param SearchRequestInterface $request
      * @return mixed
      */
-    public function search(RequestInterface $request)
+    public function search(SearchRequestInterface $request)
     {
         return Search\MethodGateway::getInstance()
             ->getMethodFromRequest($request)

@@ -2,7 +2,7 @@
 
 namespace SonnyBlaine\RoveretiBridge\Search\Method;
 
-use SonnyBlaine\IntegratorBridge\RequestInterface;
+use SonnyBlaine\IntegratorBridge\SearchRequestInterface;
 use SonnyBlaine\RoveretiBridge\MethodInterface;
 use Simonetti\Rovereti as SDK;
 
@@ -11,12 +11,12 @@ class DisponibilidadeFinanceira implements MethodInterface
     private const URI = '/Api/ContaPagar/DisponibilidadeFinanceira/jsonData';
     private const METHOD_NAME = 'BuscarDisponibilidadeFinanceira';
 
-    public function validateMethod(RequestInterface $request)
+    public function validateMethod(SearchRequestInterface $request)
     {
         return self::METHOD_NAME === $request->getMethodIdentifier();
     }
 
-    public function execute(SDK\Client $client, RequestInterface $request)
+    public function execute(SDK\Client $client, SearchRequestInterface $request)
     {
         $codEmpresa = intval($request->getData()->codEmpresa);
         if (!$codEmpresa) {

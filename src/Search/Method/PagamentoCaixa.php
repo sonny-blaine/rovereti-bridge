@@ -3,7 +3,7 @@
 namespace SonnyBlaine\RoveretiBridge\Search\Method;
 
 use Simonetti\Rovereti\Client;
-use SonnyBlaine\IntegratorBridge\RequestInterface;
+use SonnyBlaine\IntegratorBridge\SearchRequestInterface;
 use SonnyBlaine\RoveretiBridge\MethodInterface;
 use Simonetti\Rovereti as SDK;
 
@@ -17,21 +17,21 @@ class PagamentoCaixa implements MethodInterface
     const URL = 'Caixa/' . self::PAGAMENTO_CAIXA_METHOD;
 
     /**
-     * @param RequestInterface $request
+     * @param SearchRequestInterface $request
      * @return bool
      */
-    public function validateMethod(RequestInterface $request)
+    public function validateMethod(SearchRequestInterface $request)
     {
         return self::PAGAMENTO_CAIXA_METHOD == $request->getMethodIdentifier();
     }
 
     /**
      * @param Client $client
-     * @param RequestInterface $request
+     * @param SearchRequestInterface $request
      * @return SDK\SearchResponse
      * @throws \Exception
      */
-    public function execute(Client $client, RequestInterface $request): SDK\SearchResponse
+    public function execute(Client $client, SearchRequestInterface $request): SDK\SearchResponse
     {
         $data = $request->getData();
 
