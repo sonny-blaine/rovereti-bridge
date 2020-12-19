@@ -3,6 +3,7 @@
 namespace SonnyBlaine\RoveretiBridge\Search;
 
 use SonnyBlaine\RoveretiBridge\AbstractMethodGateway;
+use SonnyBlaine\RoveretiBridge\MethodInterface;
 use SonnyBlaine\RoveretiBridge\Search\Method;
 
 /**
@@ -13,7 +14,7 @@ class MethodGateway extends AbstractMethodGateway
 {
     /**
      * MethodGateway constructor.
-     * @param array|\SonnyBlaine\RoveretiBridge\MethodInterface[] $methods
+     * @param array|MethodInterface[] $methods
      */
     protected function __construct($methods)
     {

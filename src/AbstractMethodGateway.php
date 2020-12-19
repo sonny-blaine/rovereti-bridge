@@ -2,7 +2,7 @@
 
 namespace SonnyBlaine\RoveretiBridge;
 
-use SonnyBlaine\IntegratorBridge\RequestInterface;
+use SonnyBlaine\IntegratorBridge\SearchRequestInterface;
 
 abstract class AbstractMethodGateway
 {
@@ -21,11 +21,11 @@ abstract class AbstractMethodGateway
     }
 
     /**
-     * @param RequestInterface $request
+     * @param SearchRequestInterface $request
      * @return MethodInterface
      * @throws \Exception
      */
-    public function getMethodFromRequest(RequestInterface $request): MethodInterface
+    public function getMethodFromRequest(SearchRequestInterface $request): MethodInterface
     {
         foreach ($this->methods as $method) {
             if ($method->validateMethod($request)) {
